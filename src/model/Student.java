@@ -65,7 +65,5 @@ public class Student {
 	
 	//5. other functions
 	
-	//TODO
-	//Course
-	//Grade
+
 }
