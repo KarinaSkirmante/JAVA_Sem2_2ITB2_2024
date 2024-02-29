@@ -73,7 +73,7 @@ public class Course {
 	//4.toString
 	public String toString() {
 		return cID + ": " + title + "("+creditPoints+" KP), " 
-				+ professor; 
+				+ professor.getName() + " " + professor.getSurname(); 
 	}
 	
 	

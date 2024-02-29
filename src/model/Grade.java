@@ -55,6 +55,26 @@ public class Grade {
 	
 	
 	//3. constructors
+	public Grade() {
+		setgID();
+		setGrValue(1);
+		setStudent(new Student());
+		setCourse(new Course());
+	}
+	
+	public Grade(int grValue, Student student, Course course) {
+		setgID();
+		setGrValue(grValue);
+		setStudent(student);
+		setCourse(course);
+	}
+	
+		
 	//4.toString
+	
+	public String toString() {
+		return gID + ":" + grValue + "->" + student.getName() 
+		+ " " + student.getSurname() + "(" + course.getTitle()+ ")";
+	}
 	//5.other functions
 }
