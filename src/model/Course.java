@@ -55,6 +55,34 @@ public class Course {
 	
 	
 	//3.constructors
+	public Course() {
+		setcID();
+		setTitle("Civilā aizsardzība");
+		setCreditPoints(1);
+		setProfessor(new Professor());
+	}
+	
+	public Course(String title, int creditPoints, Professor professor ) {
+		setcID();
+		setTitle(title);
+		setCreditPoints(creditPoints);
+		setProfessor(professor);
+		
+	}
+	
 	//4.toString
+	public String toString() {
+		return cID + ": " + title + "("+creditPoints+" KP), " 
+				+ professor; 
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+
 	//5. other functions
 }
