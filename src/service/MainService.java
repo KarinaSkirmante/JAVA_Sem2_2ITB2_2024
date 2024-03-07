@@ -29,7 +29,7 @@ public class MainService {
 	
 		
 		Student stu1 = new Student();
-		Student stu2 = new Student("Klāvs", "Grīnvalds");
+		Student stu2 = new Student("Klāvs", "Grīnvalds", "121290-45678");
 		allStudents.add(stu1);
 		allStudents.add(stu2);
 		
@@ -146,6 +146,21 @@ public class MainService {
 		return howMany;
 		
 	}
+	
+	
+	//CRUD - create - retrieve - update - delete
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

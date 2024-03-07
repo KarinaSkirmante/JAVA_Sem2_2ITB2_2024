@@ -5,6 +5,7 @@ public class Student {
 	private long sID;
 	private String name;
 	private String surname;
+	private String personCode;
 	
 	private static long counter = 10000; //ne get, ne set funkcijas
 	//2.get and set
@@ -41,25 +42,38 @@ public class Student {
 		else
 			this.surname = "Undefined";			
 	}
-	
+	public String getPersonCode() {
+		return personCode;
+	}
+
+	public void setPersonCode(String personCode) {
+		if(personCode != null && personCode.matches("[0-9]{6}-[0-9]{5}"))
+			this.personCode = personCode;
+		else
+			this.personCode = "Undefined";
+	}
 	
 	//3. constructors
 	
+
+
 	public Student()
 	{
 		setsID();
 		setName("Baiba");
 		setSurname("Jaukā");
+		setPersonCode("123456-12345");
 	}
 	
-	public Student(String name, String surname) {
+	public Student(String name, String surname, String personCode) {
 		setsID();
 		setName(name);
 		setSurname(surname);
+		setPersonCode(personCode);
 	}
 	//4. toString
 	public String toString() {
-		return sID + ": " + name + " " + surname;
+		return sID + ": " + name + " " + surname + "(" + personCode + ")";
 	}
 	
 	
