@@ -102,6 +102,18 @@ public class MainService {
 		for(Student tempSt: allStudents) {
 			System.out.println(tempSt);
 		}
+		
+		try {
+			deleteStudentByPersonCode("121290-45678");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("-------------------");
+		for(Student tempSt: allStudents) {
+			System.out.println(tempSt);
+		}
+		
 
 	}
 	
@@ -191,7 +203,7 @@ public class MainService {
 		
 		Student newStudent = new Student(name, surname, personCode);
 		allStudents.add(newStudent);
-		
+
 		
 	}
 	//RETRIEVE
@@ -239,7 +251,25 @@ public class MainService {
 		
 	}
 	//DELETE
+	public static void deleteStudentByPersonCode(String personCode) throws Exception{
+		//1. pārbaudam ievades argumentu
+		if(personCode == null) {
+			throw new Exception("Problems with input arguments");
+		}
+		//2. atrodam studentu, ko gribam dzest
+		for(Student tempSt : allStudents) {
+			if(tempSt.getPersonCode().equals(personCode)) {
+				//3. remove funkciju izdzēšam un return
+				allStudents.remove(tempSt);
+				return;
+			}
+		}
 	
+		
+		//4. izmetam izņēmumu, ja tāds students neeksistē
+		throw new Exception("Student with personcode " + personCode
+				+ " is not registered in the system");
+	}
 	
 	
 	
