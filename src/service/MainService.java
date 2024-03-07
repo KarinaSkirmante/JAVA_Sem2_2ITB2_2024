@@ -64,8 +64,11 @@ public class MainService {
 		
 		try
 		{
-			System.out.println(stu2.getName() + " " + stu2.getSurname() 
-			+ "-> vidējā atzīme ir " + calculateAVGgradeByStudent(stu2));
+			Student temptSt = retrieveStudentByPersonCode("121290-45678");
+			System.out.println("Atrastais students " + temptSt);
+			
+			System.out.println(temptSt.getName() + " " + temptSt.getSurname() 
+			+ "-> vidējā atzīme ir " + calculateAVGgradeByStudent(temptSt));
 			
 			System.out.println(c2.getTitle() + " -> vidēja atzīme ir "
 			+ calculateAVGgradeInCourse(c2));
@@ -73,9 +76,21 @@ public class MainService {
 			System.out.println(pr2.getName() + " " + pr2.getSurname()
 					+ " pasniedz " + calculateHowManyCoursesByProfessor(pr2)
 					+ " kursus");
+			
+			
+			createNewStudent("Eduards", "Pastars", "121285-56473");
+			createNewStudent("Klāvs", "Grīnvalds", "121290-45678");
+			
+		
+			
+			
 		}
 		catch (Exception e) {
 			System.out.println(e);
+		}
+		System.out.println("-------------------");
+		for(Student tempSt: allStudents) {
+			System.out.println(tempSt);
 		}
 
 	}
@@ -160,7 +175,7 @@ public class MainService {
 		for(Student tempSt: allStudents) {
 			if(tempSt.getPersonCode().equals(personCode)) {
 				throw new Exception(tempSt.getName() +" " + tempSt.getSurname()
-				+ " is already regeisterd in the system");
+				+ " is already registered in the system");
 			}
 		}
 		
@@ -169,11 +184,32 @@ public class MainService {
 		
 		
 	}
+	//RETRIEVE
+	public static Student retrieveStudentByPersonCode(String personCode) throws Exception{
+		//TODO
+		//1. pārbaudīt personCode ir null
+		if(personCode == null) {
+			throw new Exception("Problems with input arguments");
+		}
+		
+		//2. ejot cauri foreach cikla visiem studentiem, atrast konkrēto pēc personas koda
+		for(Student tempSt : allStudents) {
+			if(tempSt.getPersonCode().equals(personCode)) {
+				//3. atgriezt pašu atrasto stuedntu
+				return tempSt;
+			}
+		}
+		//4. pēc foreach cikla beigām izmest izņemu, ka tāds students neeksistē sistemā
+
+		throw new Exception("Student with personcode " + personCode
+		+ " is not registered in the system");
+	
+		}
 	
 	
+	//UPDATE
 	
-	
-	
+	//DELETE
 	
 	
 	
