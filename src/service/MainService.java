@@ -50,9 +50,11 @@ public class MainService {
 		Grade gr1 = new Grade();
 		Grade gr2 = new Grade(10, stu2, c2);
 		Grade gr3 = new Grade(7, stu2, c1);
+		Grade gr4 = new Grade(3, stu1, c2);
 		allGrades.add(gr1);
 		allGrades.add(gr2);
 		allGrades.add(gr3);
+		allGrades.add(gr4);
 		
 		for(Grade tempGr: allGrades) {
 			System.out.println(tempGr);
@@ -62,6 +64,9 @@ public class MainService {
 		{
 			System.out.println(stu2.getName() + " " + stu2.getSurname() 
 			+ "-> vidējā atzīme ir " + calculateAVGgradeByStudent(stu2));
+			
+			System.out.println(c2.getTitle() + " -> vidēja atzīme ir "+
+			calculateAVGgradeInCourse(c2));
 		}
 		catch (Exception e) {
 			System.out.println(e);
@@ -91,5 +96,29 @@ public class MainService {
 		
 		
 	}
-
+	//TODO
+	//Create a new method which calculates average grade based on course credit
+	//points (weighted average grade) for each student
+	
+	
+	public static float calculateAVGgradeInCourse(Course course) throws Exception {
+		if(course == null) throw new Exception("Problems with input arguments");
+		
+		float sum = 0;
+		int howMany = 0;
+		
+		for(Grade tempGr : allGrades) {
+			if(tempGr.getCourse().equals(course)) {
+				sum = sum + tempGr.getGrValue();
+				howMany++;
+			}
+		}
+		
+		//if(howMany == 0) throw new Exception("There is no grade for this student");
+		if(howMany == 0) return 0;
+		return sum/howMany;
+		
+	}
+	
+	
 }
