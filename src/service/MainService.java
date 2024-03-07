@@ -40,8 +40,10 @@ public class MainService {
 		
 		Course c1 = new Course();
 		Course c2 = new Course("Programmēšana tīmeklī JAVA", 4, pr2);
+		Course c3 = new Course("Objektoerientētā programmēšana II", 4, pr2);
 		allCourses.add(c1);
 		allCourses.add(c2);
+		allCourses.add(c3);
 		
 		for(Course tempC : allCourses) {
 			System.out.println(tempC);
@@ -65,8 +67,12 @@ public class MainService {
 			System.out.println(stu2.getName() + " " + stu2.getSurname() 
 			+ "-> vidējā atzīme ir " + calculateAVGgradeByStudent(stu2));
 			
-			System.out.println(c2.getTitle() + " -> vidēja atzīme ir "+
-			calculateAVGgradeInCourse(c2));
+			System.out.println(c2.getTitle() + " -> vidēja atzīme ir "
+			+ calculateAVGgradeInCourse(c2));
+			
+			System.out.println(pr2.getName() + " " + pr2.getSurname()
+					+ " pasniedz " + calculateHowManyCoursesByProfessor(pr2)
+					+ " kursus");
 		}
 		catch (Exception e) {
 			System.out.println(e);
@@ -114,11 +120,35 @@ public class MainService {
 			}
 		}
 		
-		//if(howMany == 0) throw new Exception("There is no grade for this student");
+		//if(howMany == 0) throw new Exception("There is no grade for this course");
 		if(howMany == 0) return 0;
 		return sum/howMany;
 		
 	}
+	//TODO
+	//Create a new method which calculates how many courses does professor
+	//teach;
+	
+	public static int calculateHowManyCoursesByProfessor(Professor professor) 
+			throws Exception
+	{
+		if(professor == null) throw new Exception("Problems with input arguments");
+		
+		int howMany = 0;
+		
+		
+		for(Course tempCr: allCourses) {
+			if(tempCr.getProfessor().equals(professor)) {
+				howMany++;
+			}
+		}
+
+		return howMany;
+		
+	}
+	
+	
+	
 	
 	
 }
