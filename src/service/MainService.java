@@ -57,7 +57,39 @@ public class MainService {
 		for(Grade tempGr: allGrades) {
 			System.out.println(tempGr);
 		}
+		
+		try
+		{
+			System.out.println(stu2.getName() + " " + stu2.getSurname() 
+			+ "-> vidējā atzīme ir " + calculateAVGgradeByStudent(stu2));
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
 
+	}
+	
+	public static float calculateAVGgradeByStudent(Student inputStudent) throws Exception{
+		if(inputStudent == null) throw new Exception("Problems with input arguments");
+		
+		float sum = 0;
+		int howMany = 0;
+		
+		for(Grade tempGr : allGrades) {
+			if(tempGr.getStudent().equals(inputStudent)) {
+				sum = sum + tempGr.getGrValue();
+				howMany++;
+			}
+		}
+		
+		//if(howMany == 0) throw new Exception("There is no grade for this student");
+		if(howMany == 0) return 0;
+		return sum/howMany;
+		
+		
+		
+		
+		
 	}
 
 }
