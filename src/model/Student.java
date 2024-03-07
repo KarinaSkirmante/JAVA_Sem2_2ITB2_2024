@@ -1,6 +1,6 @@
 package model;
 
-public class Student {
+public class Student extends Person{
 	//1.variables
 	private long sID;
 
@@ -32,14 +32,13 @@ public class Student {
 	}
 	
 	public Student(String name, String surname, String personCode) {
+		super(name, surname, personCode);
 		setsID();
-		setName(name);
-		setSurname(surname);
-		setPersonCode(personCode);
+
 	}
 	//4. toString
 	public String toString() {
-		return sID + ": " + name + " " + surname + "(" + personCode + ")";
+		return sID + ": " + super.toString();
 	}
 	
 	
