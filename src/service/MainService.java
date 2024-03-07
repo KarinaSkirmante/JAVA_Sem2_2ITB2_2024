@@ -251,4 +251,9 @@ public class MainService {
 		throw new Exception("Student with personcode " + personCode + " is not registered in the system");
 	}
 
+	//TODO
+	//sort student by avarageGrade
+	//apskatīt Professor klasi https://github.com/KarinaSkirmante/JAVA_Sem2_2ITB1_2024/tree/model-changes
+	//
+	
 }
