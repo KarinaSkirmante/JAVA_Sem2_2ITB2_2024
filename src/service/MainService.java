@@ -149,6 +149,26 @@ public class MainService {
 	
 	
 	//CRUD - create - retrieve - update - delete
+	//CREATE
+	public static void createNewStudent(String name, String surname, String personCode) 
+			throws Exception  {
+		if(name == null || surname == null || personCode == null) {
+			throw new Exception("Problems with input arguments");
+		}
+		
+		
+		for(Student tempSt: allStudents) {
+			if(tempSt.getPersonCode().equals(personCode)) {
+				throw new Exception(tempSt.getName() +" " + tempSt.getSurname()
+				+ " is already regeisterd in the system");
+			}
+		}
+		
+		Student newStudent = new Student(name, surname, personCode);
+		allStudents.add(newStudent);
+		
+		
+	}
 	
 	
 	
