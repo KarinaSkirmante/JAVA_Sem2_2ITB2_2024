@@ -81,13 +81,23 @@ public class MainService {
 			createNewStudent("Eduards", "Pastars", "121285-56473");
 			createNewStudent("Klāvs", "Grīnvalds", "121290-45678");
 			
-		
+			
 			
 			
 		}
 		catch (Exception e) {
 			System.out.println(e);
 		}
+		
+		
+		try
+		{
+			updateStudentByPersonCode("121285-56473", "Kalniņš");//Pastars uz Kalniņš
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		
 		System.out.println("-------------------");
 		for(Student tempSt: allStudents) {
 			System.out.println(tempSt);
@@ -208,7 +218,26 @@ public class MainService {
 	
 	
 	//UPDATE
-	
+	public static void updateStudentByPersonCode(String personCode, String newSurname) throws Exception {
+		if(personCode == null || newSurname == null) {
+			throw new Exception("Problems with input arguments");
+		}
+		for(Student tempSt : allStudents) {
+			if(tempSt.getPersonCode().equals(personCode)) {
+				if(!tempSt.getSurname().equals(newSurname))
+				{
+					tempSt.setSurname(newSurname);
+				}
+				return;
+				
+			}
+		}
+		
+		throw new Exception("Student with personcode " + personCode
+				+ " is not registered in the system");
+		
+		
+	}
 	//DELETE
 	
 	
